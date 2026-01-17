@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .apple-link {
+    @apply text-apple-blue hover:underline cursor-pointer transition-colors;
+  }
+
+  .apple-link-chevron::after {
+    content: ' >';
+    @apply inline-block ml-1 transition-transform;
+  }
+
+  .apple-link-chevron:hover::after {
+    @apply translate-x-0.5;
+  }
+}
