@@ -8,8 +8,27 @@
 - Tailwind CSSベース
 - TypeScript対応
 - Storybook付属
+- GitHub Packagesで配布
 
 ## インストール
+
+### 前提条件
+
+GitHub Packagesからパッケージを取得するため、以下の設定が必要です。
+
+1. プロジェクトの `.npmrc` に追加:
+```
+@khides:registry=https://npm.pkg.github.com
+```
+
+2. `~/.npmrc` にPersonal Access Token（PAT）を設定:
+```
+//npm.pkg.github.com/:_authToken=ghp_xxxxx
+```
+
+PATには `read:packages` スコープが必要です。
+
+### パッケージ追加
 
 ```bash
 pnpm add @khides/minimal-ds
