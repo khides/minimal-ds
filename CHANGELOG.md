@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/khides/minimal-ds/compare/v0.2.1...v0.3.0) (2026-01-18)
+
+
+### Features
+
+* improve component styling for Figma VRT alignment ([8d4e4c9](https://github.com/khides/minimal-ds/commit/8d4e4c95c5a2152b73f8ff4c1101cbae17b881c2))
+
 ## [0.2.1](https://github.com/khides/minimal-ds/compare/v0.2.0...v0.2.1) (2026-01-17)
 
 
