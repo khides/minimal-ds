@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/khides/minimal-ds/compare/v0.3.0...v0.3.1) (2026-01-18)
+
+
+### Bug Fixes
+
+* **ServiceCard:** adjust height for responsive design ([87178dc](https://github.com/khides/minimal-ds/commit/87178dc4834336ad2d0c1eff024074a642c99b02))
+
 ## [0.3.0](https://github.com/khides/minimal-ds/compare/v0.2.1...v0.3.0) (2026-01-18)
 
 
