@@ -16,6 +16,7 @@ export type HeroSectionProps = {
   primaryAction?: HeroAction
   secondaryAction?: HeroAction
   backgroundImage?: string
+  imagePosition?: 'top' | 'center' | 'bottom'
   className?: string
 }
 
@@ -27,14 +28,21 @@ export function HeroSection({
   primaryAction,
   secondaryAction,
   backgroundImage,
+  imagePosition = 'center',
   className,
 }: HeroSectionProps) {
   const isDark = theme === 'dark'
 
+  const bgPositionMap = {
+    top: 'center top',
+    center: 'center center',
+    bottom: 'center bottom',
+  }
+
   return (
     <section
       className={cn(
-        'relative min-h-[580px] lg:min-h-[692px] flex flex-col items-center justify-center text-center py-section-padding-sm lg:py-section-padding',
+        'relative min-h-[580px] lg:min-h-[800px] flex flex-col items-center justify-start text-center pt-12 lg:pt-16',
         isDark ? 'bg-apple-black text-white' : 'bg-apple-white text-apple-gray-900',
         className
       )}
@@ -43,7 +51,7 @@ export function HeroSection({
           ? {
               backgroundImage: `url(${backgroundImage})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: bgPositionMap[imagePosition],
             }
           : undefined
       }

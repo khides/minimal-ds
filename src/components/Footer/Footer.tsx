@@ -14,6 +14,7 @@ export type FooterProps = {
   sections?: FooterSection[]
   locale?: string
   copyright?: string
+  theme?: 'light' | 'dark'
   className?: string
 }
 
@@ -97,18 +98,28 @@ export function Footer({
   sections = defaultSections,
   locale = 'United States',
   copyright = `Copyright © ${new Date().getFullYear()} Apple Inc. All rights reserved.`,
+  theme = 'light',
   className,
 }: FooterProps) {
+  const isDark = theme === 'dark'
+
   return (
     <footer
-      className={cn('bg-apple-gray-100 text-apple-gray-600 font-sf-pro', className)}
+      className={cn(
+        'font-sf-pro',
+        isDark ? 'bg-black text-gray-400' : 'bg-apple-gray-100 text-apple-gray-600',
+        className
+      )}
     >
       <div className="max-w-content-wide mx-auto px-4 lg:px-8 py-8">
         {/* Footer Sections */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-8">
           {sections.map((section) => (
             <div key={section.title}>
-              <h3 className="text-xs font-semibold text-apple-gray-900 mb-3">
+              <h3 className={cn(
+                'text-xs font-semibold mb-3',
+                isDark ? 'text-gray-200' : 'text-apple-gray-900'
+              )}>
                 {section.title}
               </h3>
               <ul className="space-y-2">
@@ -116,7 +127,12 @@ export function Footer({
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-xs text-apple-gray-600 hover:text-apple-gray-900 transition-colors"
+                      className={cn(
+                        'text-xs transition-colors',
+                        isDark
+                          ? 'text-gray-400 hover:text-white'
+                          : 'text-apple-gray-600 hover:text-apple-gray-900'
+                      )}
                     >
                       {link.label}
                     </a>
@@ -128,11 +144,17 @@ export function Footer({
         </div>
 
         {/* Divider */}
-        <hr className="border-apple-gray-300 mb-4" />
+        <hr className={cn(
+          'mb-4',
+          isDark ? 'border-gray-700' : 'border-apple-gray-300'
+        )} />
 
         {/* Bottom Section */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <p className="text-xs text-apple-gray-600">
+          <p className={cn(
+            'text-xs',
+            isDark ? 'text-gray-400' : 'text-apple-gray-600'
+          )}>
             More ways to shop:{' '}
             <a href="/retail" className="text-apple-blue hover:underline">
               Find an Apple Store
@@ -144,27 +166,48 @@ export function Footer({
             near you. Or call 1-800-MY-APPLE.
           </p>
 
-          <p className="text-xs text-apple-gray-600">{locale}</p>
+          <p className={cn(
+            'text-xs',
+            isDark ? 'text-gray-400' : 'text-apple-gray-600'
+          )}>{locale}</p>
         </div>
 
         {/* Copyright */}
         <div className="mt-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
-          <p className="text-xs text-apple-gray-600">{copyright}</p>
+          <p className={cn(
+            'text-xs',
+            isDark ? 'text-gray-400' : 'text-apple-gray-600'
+          )}>{copyright}</p>
 
           <div className="flex flex-wrap gap-4">
-            <a href="/privacy" className="text-xs text-apple-gray-600 hover:text-apple-gray-900">
+            <a href="/privacy" className={cn(
+              'text-xs transition-colors',
+              isDark ? 'text-gray-400 hover:text-white' : 'text-apple-gray-600 hover:text-apple-gray-900'
+            )}>
               Privacy Policy
             </a>
-            <a href="/terms" className="text-xs text-apple-gray-600 hover:text-apple-gray-900">
+            <a href="/terms" className={cn(
+              'text-xs transition-colors',
+              isDark ? 'text-gray-400 hover:text-white' : 'text-apple-gray-600 hover:text-apple-gray-900'
+            )}>
               Terms of Use
             </a>
-            <a href="/sales-refund" className="text-xs text-apple-gray-600 hover:text-apple-gray-900">
+            <a href="/sales-refund" className={cn(
+              'text-xs transition-colors',
+              isDark ? 'text-gray-400 hover:text-white' : 'text-apple-gray-600 hover:text-apple-gray-900'
+            )}>
               Sales and Refunds
             </a>
-            <a href="/legal" className="text-xs text-apple-gray-600 hover:text-apple-gray-900">
+            <a href="/legal" className={cn(
+              'text-xs transition-colors',
+              isDark ? 'text-gray-400 hover:text-white' : 'text-apple-gray-600 hover:text-apple-gray-900'
+            )}>
               Legal
             </a>
-            <a href="/sitemap" className="text-xs text-apple-gray-600 hover:text-apple-gray-900">
+            <a href="/sitemap" className={cn(
+              'text-xs transition-colors',
+              isDark ? 'text-gray-400 hover:text-white' : 'text-apple-gray-600 hover:text-apple-gray-900'
+            )}>
               Site Map
             </a>
           </div>

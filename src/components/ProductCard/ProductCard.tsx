@@ -17,6 +17,7 @@ export type ProductCardProps = {
   layout?: ProductCardLayout
   image?: string
   imageAlt?: string
+  imagePosition?: 'top' | 'center' | 'bottom'
   primaryAction?: ProductCardAction
   secondaryAction?: ProductCardAction
   className?: string
@@ -30,12 +31,19 @@ export function ProductCard({
   layout = 'full-width',
   image,
   imageAlt,
+  imagePosition = 'bottom',
   primaryAction,
   secondaryAction,
   className,
 }: ProductCardProps) {
   const isDark = theme === 'dark'
   const isHalfWidth = layout === 'half-width'
+
+  const imagePositionClasses = {
+    top: 'items-start pt-24',
+    center: 'items-center',
+    bottom: 'items-end',
+  }
 
   return (
     <section
@@ -114,11 +122,18 @@ export function ProductCard({
 
       {/* Background Image */}
       {image && (
-        <div className="absolute inset-0 flex items-end justify-center">
+        <div className={cn(
+          'absolute inset-0 flex justify-center',
+          imagePositionClasses[imagePosition]
+        )}>
           <img
             src={image}
             alt={imageAlt || title}
-            className="max-w-full max-h-[70%] object-contain object-bottom"
+            className={cn(
+              'max-w-full object-contain',
+              imagePosition === 'center' ? 'max-h-[85%]' : 'max-h-[70%]',
+              imagePosition === 'bottom' && 'object-bottom'
+            )}
           />
         </div>
       )}
