@@ -62,7 +62,7 @@ function ServiceCard({ item, parentTheme }: ServiceCardProps) {
   const content = (
     <div
       className={cn(
-        'relative rounded-2xl overflow-hidden h-[350px]',
+        'relative rounded-2xl overflow-hidden h-[350px] lg:h-[380px]',
         isDark ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'
       )}
       style={{ backgroundColor: item.backgroundColor || undefined }}
